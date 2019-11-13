@@ -1,9 +1,16 @@
+import sys
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
 from django.conf import settings
 from django.urls import include, path
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
+
+
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -15,6 +22,7 @@ urlpatterns = [
     # User management
     path("users/", include("rrtrr.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    path("content", include("rrtrr.content.urls", namespace="content")),
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
@@ -38,6 +46,7 @@ if settings.DEBUG:
             kwargs={"exception": Exception("Page not Found")},
         ),
         path("500/", default_views.server_error),
+
     ]
     if "debug_toolbar" in settings.INSTALLED_APPS:
         import debug_toolbar
