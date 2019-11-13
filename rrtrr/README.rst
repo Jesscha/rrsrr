@@ -1,7 +1,7 @@
 rrtrr
 =====
 
-blog for sharing personal inspiration
+Behold My Awesome Project!
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
      :target: https://github.com/pydanny/cookiecutter-django/
@@ -9,6 +9,9 @@ blog for sharing personal inspiration
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
      :target: https://github.com/ambv/black
      :alt: Black code style
+
+
+:License: MIT
 
 
 Settings

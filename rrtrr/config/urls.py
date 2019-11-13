@@ -4,8 +4,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
-from rrtrr.content import views as content_view
-
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -40,8 +38,6 @@ if settings.DEBUG:
             kwargs={"exception": Exception("Page not Found")},
         ),
         path("500/", default_views.server_error),
-        path("contents/", content_view.showtext, name = 'showtext')
-
     ]
     if "debug_toolbar" in settings.INSTALLED_APPS:
         import debug_toolbar
