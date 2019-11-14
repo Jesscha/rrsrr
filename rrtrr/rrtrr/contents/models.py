@@ -7,6 +7,8 @@ class Post(models.Model):
     pub_date = models.DateField()
     title = models.CharField(max_length=100, blank=True, null=True)
     text = models.TextField()
+    image = models.FileField(null=True, blank=True, upload_to='cats')
+
 
     class Meta:
         verbose_name = '포스'

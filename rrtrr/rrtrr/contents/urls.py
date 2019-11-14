@@ -10,5 +10,5 @@ app_name = "contents"
 urlpatterns = [
     re_path(r'^$', ContentsListView.as_view()),
     re_path(r'^create/$', ContentCreateView.as_view()),
-    re_path(r'^detail/(?P<id>\d+)/$', ContentsDetailView.as_view())
+    re_path(r'^detail/(?P<id>\d+)/$', ContentsDetailView.as_view(), name='abc'),
 ]

@@ -33,12 +33,16 @@ class ContentCreateView(View):
     def get(self, request, *args, **kwargs):
         form = PostModelForm()
         context = {"form":form}
+        print(request)
         return render(request, self.template_name, context)
     def post(self, request,  *args, **kwargs):
-        form = PostModelForm(request.POST)
+        form = PostModelForm(request.POST, request.FILES)
         if form.is_valid():
+
             form.save()
         context = {"form":form}
+        print(request.POST)
+        print(request.FILES)
         return render(request, self.template_name, context)
 
 class ContentsDetailView(DetailView):
@@ -46,9 +50,10 @@ class ContentsDetailView(DetailView):
     queryset = Post.objects.all()
     context_object_name = 'abc'
 
+
     def get_object(self):
         id_= self.kwargs.get("id")
-        print(self.kwargs)
+        # print(request)
         return get_object_or_404(Post, id=id_)
 
 

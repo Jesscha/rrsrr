@@ -7,5 +7,6 @@ class PostModelForm(forms.ModelForm):
         fields = [
             'title',
             'pub_date',
-            'text'
+            'text',
+            'image'
         ]
