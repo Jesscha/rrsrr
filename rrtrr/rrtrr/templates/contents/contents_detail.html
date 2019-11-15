@@ -11,6 +11,12 @@ contents
 
 <h1> {{ object.title }}</h1>
 <p>{{ object.text }}</p>
+  {% if object.image %}
+   path : {{ object.image.path }}
+    url : {{ object.image.url }}
+<img src="{{ object.image.url }}" alt="">
+
+  {% endif %}
 
 
 
