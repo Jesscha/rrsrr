@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+contents
+{% block content %}
+
+
+<h1> {{ object.title }}</h1>
+<p>{{ object.text }}</p>
+  {% if object.image %}
+   path : {{ object.image.path }}
+    url : {{ object.image.url }}
+<img src="{{ object.image.url }}" alt="">
+
+  {% endif %}
+
+
+
+{% endblock %}
+</body>
+</html>

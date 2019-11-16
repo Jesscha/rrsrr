@@ -240,7 +240,7 @@ texinfo_documents = [
         "rrtrr Documentation",
         """jessecha""",
         "rrtrr",
-        """blog for sharing personal inspiration""",
+        """Behold My Awesome Project!""",
         "Miscellaneous",
     )
 ]

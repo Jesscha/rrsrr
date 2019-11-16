@@ -1,0 +1,17 @@
+{% extends "contents/contents_base.html" %}
+
+</head>
+<body>
+contents
+{% block content %}
+
+  {% for instance in object_list %}
+  <p>
+  {{ instance.id }} - <a href="#" > {{ instance.title }}</a>
+  </p>
+  {% endfor %}
+
+
+{% endblock %}
+</body>
+</html>
