@@ -1,0 +1,22 @@
+{% extends "contents/contents_base.html" %}
+{% load sass_tags %}
+<link href="{% sass_src 'sass/contents_home.scss' %}" rel="stylesheet" type="text/css" />
+</head>
+
+
+<body>
+
+
+contents
+{% block content %}
+
+  {% for instance in object_list %}
+  <p>
+  {{ instance.id }} - <a href="#" > {{ instance.title }}</a>
+  </p>
+  {% endfor %}
+
+
+{% endblock %}
+</body>
+</html>

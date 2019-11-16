@@ -1,7 +1,7 @@
 """
 Base settings to build other settings files upon.
 """
-
+import os
 import environ
 
 ROOT_DIR = (
@@ -79,7 +79,12 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "rest_framework",
+    "sass_processor"
 ]
+SASS_PROCESSOR_ENABLED = True
+SASS_OUTPUT_STYLE = 'compact'
+SASS_PROCESSOR_ROOT = os.path.join(ROOT_DIR, 'rrtrr', 'static')
+SASS_PRECISION = 8
 
 LOCAL_APPS = [
     "rrtrr.users.apps.UsersConfig",

@@ -13,11 +13,27 @@ from .forms import PostModelForm
 
 from .models import Post
 
+
+class ContentsHomeView(ListView):
+    # queryset = Post.objects.all()
+    template_name = 'contents/contents_home.html'
+    def get_queryset(self):
+        return Post.objects.all()
+
 class ContentsListView(ListView):
     # queryset = Post.objects.all()
     template_name = 'contents/contents_list.html'
     def get_queryset(self):
-        return Post.objects.all()
+        context = ['abc', 'cdf', 'efg']
+        return context
+
+    # def get(self, request, *args, **kwargs):
+    #     abc = "abㄴㅇㄹㄴㅇㄹㅇc"
+    #     context = {"abc": abc}
+    #     print(request)
+    #     return render(request, self.template_name, context)
+
+
 
     # greeting = "good day"
     # posts = Post.objects.filter(pub_date__lte=timezone.now()).order_by('pub_date')
