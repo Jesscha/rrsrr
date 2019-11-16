@@ -2399,4 +2399,6 @@ hr { border: 0; clear: both; display: block; width: 96%; background-color: rgba(
 
 .nav-text { font-size: medium; }
 
+nav { height: 100vh; }
+
 /*# sourceMappingURL=base.css.map */
