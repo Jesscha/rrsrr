@@ -24,9 +24,8 @@ class ContentsListView(ListView):
     # queryset = Post.objects.all()
     template_name = 'contents/contents_list.html'
     def get_queryset(self):
-        context = ['abc', 'cdf', 'efg']
-        return context
-
+        return Post.objects.all()
+    #
     # def get(self, request, *args, **kwargs):
     #     abc = "abㄴㅇㄹㄴㅇㄹㅇc"
     #     context = {"abc": abc}
