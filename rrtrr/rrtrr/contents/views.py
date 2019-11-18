@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.http import HttpResponse
@@ -9,7 +11,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .forms import PostModelForm
+from .forms import PostModelForm, RawPostModelForm
 
 from .models import Post
 
@@ -25,39 +27,48 @@ class ContentsListView(ListView):
     template_name = 'contents/contents_list.html'
     def get_queryset(self):
         return Post.objects.all()
-    #
-    # def get(self, request, *args, **kwargs):
-    #     abc = "abㄴㅇㄹㄴㅇㄹㅇc"
-    #     context = {"abc": abc}
-    #     print(request)
-    #     return render(request, self.template_name, context)
+
+#
+# class ContentCreateView(View):
+#     template_name = 'contents/contents_create.html'
+#
+#     def get(self, request):
+#         my_form = RawPostModelForm()
+#         context = {
+#             "form": my_form
+#         }
+#         return render(request, self.template_name, context)
+#
+#     def post(self, request):
+#         my_form = RawPostModelForm(request.POST)
+#
+#         if my_form.is_valid():
+#             Post.objects.create(**my_form.cleaned_data)
+#         context = {
+#             "form": my_form
+#         }
+#
+#         return render(request, self.template_name, context)
 
 
 
-    # greeting = "good day"
-    # posts = Post.objects.filter(pub_date__lte=timezone.now()).order_by('pub_date')
-    #
-    #
-    # def get(self, request):
-    #     return render(request, 'contents/contents_list.html', {'posts': self.posts})
-    #
 
 
+#  modelform
 class ContentCreateView(View):
     template_name = 'contents/contents_create.html'
+
     def get(self, request, *args, **kwargs):
-        form = PostModelForm()
+        proposed_renewal_date = datetime.date.today()
+        form = PostModelForm(initial={'pub_date': proposed_renewal_date})
         context = {"form":form}
-        print(request)
+
         return render(request, self.template_name, context)
     def post(self, request,  *args, **kwargs):
         form = PostModelForm(request.POST, request.FILES)
         if form.is_valid():
-
             form.save()
         context = {"form":form}
-        print(request.POST)
-        print(request.FILES)
         return render(request, self.template_name, context)
 
 class ContentsDetailView(DetailView):

@@ -10,3 +10,16 @@ class PostModelForm(forms.ModelForm):
             'text',
             'image'
         ]
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.fields['title'].widget.attrs.update({'class': 'special'})
+            self.fields['pup_date'].widget.attrs.update(size='40')
+
+class RawPostModelForm(forms.Form):
+    title = forms.CharField()
+    pup_date = forms.DateTimeField()
+    text = forms.CharField()
+    image = forms.FileField(required=False)
+
+
