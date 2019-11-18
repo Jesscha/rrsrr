@@ -1,5 +1,7 @@
 from django.db import models
 
+from taggit.managers import TaggableManager
+from tagging.fields import TagField
 # Create your models here.
 
 
@@ -8,6 +10,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
     text = models.TextField()
     image = models.FileField(null=True, blank=True, upload_to='contents')
+    tag = TagField()
 
 
     class Meta:
@@ -17,4 +20,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-

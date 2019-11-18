@@ -9,11 +9,17 @@ from django.views.generic import (
     DetailView,
     ListView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    TemplateView,
 )
+
+from tagging.models import Tag, TaggedItem
+from tagging.views import TaggedObjectList
+
 from .forms import PostModelForm, RawPostModelForm
 
 from .models import Post
+
 
 
 class ContentsHomeView(ListView):
@@ -82,4 +88,10 @@ class ContentsDetailView(DetailView):
         # print(request)
         return get_object_or_404(Post, id=id_)
 
+class TagTV(TemplateView):
+    template_name = 'contents/tagging_cloud.html'
 
+
+class PostTOL(TaggedObjectList):
+    model = Post
+    template_name = 'contents/tagging_post_list.html'

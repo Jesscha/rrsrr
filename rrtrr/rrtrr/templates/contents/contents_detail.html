@@ -5,11 +5,20 @@
 <h1> {{ object.title }}</h1>
 <p>{{ object.text }}</p>
   {% if object.image %}
-   path : {{ object.image.path }}
-    url : {{ object.image.url }}
 <img src="{{ object.image.url }}" alt="">
-
   {% endif %}
+<p>{{ object.tag }}</p>
+
+
+<div>
+    <b>TAGS: </b>
+    {% load tagging_tags %}
+    {% tags_for_object object as tags %}
+    {% for tag in tags %}
+        <a href="{% url 'contents:tagged_object_list' tag.name %}">{{ tag.name }}</a>
+    {% endfor %}
+    <a href="{% url 'contents:tag_cloud' %}"><i>[ TagCloud ]</i></a>
+</div>
 
 
 
