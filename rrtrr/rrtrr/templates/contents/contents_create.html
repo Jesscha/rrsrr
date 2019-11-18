@@ -3,12 +3,23 @@
 
   <form action="." method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-
-    {{ form.pub_date }}
     {{ form.as_p }}
     <input type="submit" value="save">
 
   </form>
+
+
+
+  <script>
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1900:2012",
+      // You can put more options here.
+    });
+  });
+  </script>
 
 {% endblock %}
 
